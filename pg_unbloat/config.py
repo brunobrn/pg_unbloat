@@ -9,12 +9,12 @@ desc = "This automation identify bloated tables in a especific database, it's no
  
 parser = argparse.ArgumentParser(description = desc)
 
-parser.add_argument("--host", help="Host address to access the database. Ex: 127.0.0.1", required=True)
-parser.add_argument("--dbname", help="Name of the database to check tables, yes we can execute only in one database at a time", required=True)
-parser.add_argument("--user", help="Name of user to connect in the database, the user need to have superuser grants", required=True)
-parser.add_argument("--port", help="Port of to connect on instance", default=5432)
-parser.add_argument("--table_min_size", help="Minimum size to scan tables", default=1)
-parser.add_argument("--table_max_size", help="Maximum size to scan tables, when bigger the value more time and I/O the automation will use.", default=2048)
+parser.add_argument("--host", "--HOST", help="Host address to access the database. Ex: 127.0.0.1", required=True)
+parser.add_argument("--dbname", "--DBNAME", "-d", help="Name of the database to check tables, yes we can execute only in one database at a time", required=True)
+parser.add_argument("--user", "--USER", "-U", help="Name of user to connect in the database, the user need to have superuser grants", required=True)
+parser.add_argument("--port","--PORT", "-p", help="Port of to connect on instance", default=5432)
+parser.add_argument("--table_min_size", "--TABLE_MIN_SIZE",help="Minimum size to scan tables", default=1)
+parser.add_argument("--table_max_size", "--TABLE_MAX_SIZE",help="Maximum size to scan tables, when bigger the value more time and I/O the automation will use.", default=2048)
 
 args            = parser.parse_args()
 host            = args.__dict__["host"]

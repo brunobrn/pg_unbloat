@@ -15,6 +15,8 @@ The usage is simple, clone this repo or use the docker image.
 
 The password always be asked in every execuction.
 
+## Repo Clone
+
 ``` sh
 python exec_unbloat.py --host foo-bar.mycloud.com -U postgres -d foo-bar-database
 ```
@@ -47,4 +49,11 @@ options:
                         Maximum size to scan tables, when bigger the value more time and I/O the automation will use.
 
 
+```
+
+## Docker
+
+```sh
+docker run --name=pg_unbloat -it fariasbrunobrn/pg_unbloat:latest bash
+python exec_unbloat.py --host foo-bar.mycloud.com -U postgres -d foo-bar-database
 ```

@@ -17,6 +17,7 @@ The password always be asked in every execuction.
 
 ## Repo Clone
 
+Basic usage:
 ``` sh
 python exec_unbloat.py --host foo-bar.mycloud.com -U postgres -d foo-bar-database
 ```
@@ -44,9 +45,9 @@ options:
   --port PORT, --PORT PORT, -p PORT
                         Port of to connect on instance
   --table_min_size TABLE_MIN_SIZE, --TABLE_MIN_SIZE TABLE_MIN_SIZE
-                        Minimum size to scan tables
+                        Minimum size to scan tables (1 MB default)
   --table_max_size TABLE_MAX_SIZE, --TABLE_MAX_SIZE TABLE_MAX_SIZE
-                        Maximum size to scan tables, when bigger the value more time and I/O the automation will use.
+                        Maximum size to scan tables, when bigger the value more time and I/O the automation will use. (2048 MB default)
 
 
 ```
@@ -57,3 +58,16 @@ options:
 docker run --name=pg_unbloat -it fariasbrunobrn/pg_unbloat:latest bash
 python exec_unbloat.py --host foo-bar.mycloud.com -U postgres -d foo-bar-database
 ```
+
+# Examples
+
+Selecting bigger tables, tables bigger than 100mb and smaller than 10GB:
+``` sh
+python exec_unbloat.py --host foo-bar.mycloud.com -U postgres -d foo-bar-database --table_min_size 100 --table_max_size 10240
+```
+
+Including port:
+``` sh
+python exec_unbloat.py --host foo-bar.mycloud.com -U postgres -d foo-bar-database -p 5432
+```
+
